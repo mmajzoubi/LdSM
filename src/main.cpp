@@ -102,6 +102,7 @@ int main(int argc, char* argv[])
         params.m = result["mary"].as<int>();
         params.l1 = result["l1"].as<float>();
         params.l2 = result["l2"].as<float>();
+        params.muFlag = result["muFlag"].as<bool>();
         params.gamma = result["gamma"].as<float>();
         params.beta = result["beta"].as<float>();
         params.coefL1 = result["coefl1"].as<float>();
@@ -128,16 +129,16 @@ int main(int argc, char* argv[])
 	float raTime = 0.f;
     float loadTime = 0.f;
 
-	DataLoader teData(dataSetPath + dataSetName, false, false);
-    DataLoader teLabel(dataSetPath + dataSetName, true, false);
+	DataLoader teData(dataSetPath, dataSetName, false, false);
+    DataLoader teLabel(dataSetPath, dataSetName, true, false);
 	cerr << "Loaded test data." << endl;
 
     labelEstPairAll teLabelEstPair;
     vector<int> rootLabelHist;
 
     if (!loadOnly) {
-        DataLoader trData(dataSetPath + dataSetName, false, true);
-        DataLoader trLabel(dataSetPath + dataSetName, true, true);
+        DataLoader trData(dataSetPath, dataSetName, false, true);
+        DataLoader trLabel(dataSetPath, dataSetName, true, true);
 		cerr << "Loaded training data." << endl;
 
         params.d = max(teData.getDim(), trData.getDim());

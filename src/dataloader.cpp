@@ -2,9 +2,10 @@
 
 using namespace std;
 
-DataLoader::DataLoader(string dataSetPath, bool labelFlag, bool trainFlag) {
+DataLoader::DataLoader(string dataSetPath, string dataSetName, bool labelFlag, bool trainFlag) {
     
-    m_dataSetPath = dataSetPath;
+    m_dataSetPath = dataSetPath + dataSetName;
+    m_dataSetName = dataSetName;
     m_labelFlag = labelFlag;
     m_trainFlag = trainFlag;
 

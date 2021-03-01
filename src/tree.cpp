@@ -34,6 +34,8 @@ void Tree::buildTree(const DataLoader &trData, const DataLoader &trLabel)
         }
     }
     
+    cout << "m_params.muFlag = " << m_params.muFlag << endl;
+
     if (m_params.muFlag) {
         for (int k = 0; k < m_params.k; k++) {
             vector<float> dataMean(m_params.d, 0.f);
@@ -171,6 +173,7 @@ void savemu(vector<Varray<float>> mu, string strFile) {
 			}
 		}
 	}
+    cout << "saved mu!" << endl;
 }
 
 vector<Varray<float>> loadmu(string strFile) {
@@ -192,6 +195,7 @@ vector<Varray<float>> loadmu(string strFile) {
 				sizeof(mu[k].myMap.value[i]));
 		}
 	}
+    cout << "loaded mu!" << endl;
 	return mu;
 }
 

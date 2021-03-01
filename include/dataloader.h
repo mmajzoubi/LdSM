@@ -26,7 +26,7 @@ private:
 
 public:
 
-    DataLoader(string dataSetPath, bool labelFlag, bool trainFlag);
+    DataLoader(string dataSetPath, string dataSetName, bool labelFlag, bool trainFlag);
 
     inline const DataPoint& getDataPoint(int j) const { return m_dataPoints[j]; }
 

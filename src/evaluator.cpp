@@ -23,6 +23,7 @@ vector<ScoreValue> Evaluator::evaluate(const DataLoader &trData, const DataLoade
     vector<float> pScore(rootLabelHist.size());
     for (size_t k = 0; k < rootLabelHist.size(); k++) {
         pScore[k] = 1.f / (1.f + C*pow((rootLabelHist[k]+B), -A));
+        // if (pScore[k] < 0.0001) cout << "pscore small" << endl;
     }
     
     // for calculating the scores for 3 values of R1, R2, R3
@@ -78,6 +79,9 @@ vector<ScoreValue> Evaluator::evaluate(const DataLoader &trData, const DataLoade
             for (int j = 0; j < ri; j++) {
                 int l = j + 1;
                 int k = get<1>(labelTruePair[j]);
+                if (k >= rootLabelHist.size()) {
+                    continue;
+                }
                 psTrueTmp += 1.f / pScore[k];
                 psTrueDCG += 1.f / (pScore[k] * log2(l + 1.f));
             }
