@@ -23,7 +23,6 @@ vector<ScoreValue> Evaluator::evaluate(const DataLoader &trData, const DataLoade
     vector<float> pScore(rootLabelHist.size());
     for (size_t k = 0; k < rootLabelHist.size(); k++) {
         pScore[k] = 1.f / (1.f + C*pow((rootLabelHist[k]+B), -A));
-        // if (pScore[k] < 0.0001) cout << "pscore small" << endl;
     }
     
     // for calculating the scores for 3 values of R1, R2, R3
